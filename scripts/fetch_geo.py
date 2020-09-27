@@ -1,13 +1,19 @@
 import tarfile
 import requests
 import shutil
+import ConfigParser
 
 from pyasn import mrtx, __version__
+
+maxmind_conf = ConfigParser.RawConfigParser()
+maxmind_conf.read('../maxmind.conf')
+
+LICENSE_KEY = maxmind_conf.get('license', 'license_key')
 
 APP_BASE = "/tmp"
 
 if __name__ == '__main__':
-    url = "https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz"
+    url = "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key={0}&suffix=tar.gz".format(LICENSE_KEY)
     response = requests.get(url)
     path = '%s/GeoLite2-City.tar.gz' % (APP_BASE)
     open(path, 'wb').write(response.content)
