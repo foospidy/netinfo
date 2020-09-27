@@ -22,7 +22,7 @@ import re
 import requests
 import tarfile
 import shutil
-import ConfigParser
+import configparser
 from pyasn import mrtx
 import codecs
 from urllib.request import urlopen

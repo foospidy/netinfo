@@ -1,7 +1,7 @@
 import tarfile
 import requests
 import shutil
-import ConfigParser
+import configparser
 
 from pyasn import mrtx, __version__
 
